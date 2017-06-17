@@ -116,3 +116,15 @@ cantidadNoRespetables(NoRespetables):-
 	findall(Personaje,noEsRespetable(Personaje), ListaNoRespetables),
 	length(ListaNoRespetables,NoRespetables).
 
+masAtareado(UnPersonaje):-
+	personaje(UnPersonaje,_),
+	forall(personaje(OtroPersonaje,_),tieneMasEncargos(UnPersonaje,OtroPersonaje)).
+	
+tieneMasEncargos(UnPersonaje, OtroPersonaje):-
+	cantidadEncargos(UnPersonaje, CantidadDeEncargos1),
+	cantidadEncargos(OtroPersonaje, CantidadDeEncargos2),
+	CantidadDeEncargos1 >= CantidadDeEncargos2.
+	
+cantidadEncargos(Personaje, CantidadDeEncargos):-
+	findall(Personaje, encargo(_, Personaje,_), Encargos),
+	length(Encargos,CantidadDeEncargos).
