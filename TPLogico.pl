@@ -6,10 +6,11 @@ pareja(bernardo, charo).
 trabajaPara(marsellus, vincent).
 trabajaPara(marsellus, jules).
 trabajaPara(marsellus, winston).
-trabajaPara(vincent, bernardo).
-trabajaPara(winston, bernardo).
-trabajaPara(bianca, george).
-trabajaPara(charo, george).
+trabajaPara(Empleador, bernardo):-
+	trabajaPara(marsellus, Empleador),
+	Empleador \= jules.
+trabajaPara(Empleador, george):-
+	saleCon(Empleador,bernardo).
 
 saleCon(Persona1, Persona2):-
 	pareja(Persona1, Persona2).
