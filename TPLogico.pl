@@ -59,7 +59,7 @@ acataOrden(Empleador, Empleado):-
 	
 acataOrden(Empleador, Empleado):-
 	trabajaPara(Empleador,Persona),
-	trabajaPara(Persona, Empleado).
+	acataOrden(Persona, Empleado).
 	
 esPeligroso(Personaje):-
 	personaje(Personaje, mafioso(maton)).
@@ -75,5 +75,11 @@ robaLicorerias(Personaje):-
 	personaje(Personaje, ladron(Ocupaciones)),
 	member(licorerias, Ocupaciones).
 
-
+sanCayetano(Persona):-
+	encargo(Persona, OtraPersona, _),
+	trabajaPara(OtraPersona, Persona).
+	
+sanCayetano(Persona):-
+	encargo(Persona, OtraPersona, _),	
+	amigo(OtraPersona,Persona).
 
