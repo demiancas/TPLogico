@@ -23,3 +23,10 @@ esFiel(Persona):-
 	findall(Persona,saleCon(Persona,_),Parejas),
 	length(Parejas,CantidadDeParejas),
 	CantidadDeParejas = 1.
+
+acataOrden(Empleador, Empleado):-
+	trabajaPara(Empleador, Empleado).
+	
+acataOrden(Empleador, Empleado):-
+	trabajaPara(Empleador,Persona),
+	trabajaPara(Persona, Empleado).
