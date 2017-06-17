@@ -12,7 +12,6 @@ trabajaPara(Empleador, bernardo):-
 trabajaPara(Empleador, george):-
 	saleCon(Empleador,bernardo).
 
-% personaje(Nombre, Ocupacion)
 personaje(pumkin,     ladron([estacionesDeServicio, licorerias])).
 personaje(honeyBunny, ladron([licorerias, estacionesDeServicio])).
 personaje(vincent,    mafioso(maton)).
@@ -25,8 +24,7 @@ personaje(bernardo,   mafioso(cerebro)).
 personaje(bianca,     actriz([elPadrino1])).
 personaje(elVendedor, vender([humo, iphone])).
 personaje(jimmie,     vender([auto])).
-
-% encargo(Solicitante, Encargado, Tarea). 
+ 
 encargo(marsellus, vincent,   cuidar(mia)).
 encargo(vincent,  elVendedor, cuidar(mia)).
 encargo(marsellus, winston, ayudar(jules)).
@@ -82,4 +80,17 @@ sanCayetano(Persona):-
 sanCayetano(Persona):-
 	encargo(Persona, OtraPersona, _),	
 	amigo(OtraPersona,Persona).
+	
+nivelRespeto(vincent,15).
+nivelRespeto(Personaje,NivelDeRespeto):-
+	personaje(Personaje,Profesion),
+	respeto(Profesion,NivelDeRespeto).	
+	
+respeto(actriz(Peliculas),NivelDeRespeto):-
+	length(Peliculas, CantidadDePeliculas),
+	NivelDeRespeto is CantidadDePeliculas /	10.
+	
+respeto(mafioso(resuelveProblemas), 10).
+
+respeto(mafioso(capo), 20).	
 
