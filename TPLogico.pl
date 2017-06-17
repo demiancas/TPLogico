@@ -58,7 +58,9 @@ acataOrden(Empleador, Empleado):-
 acataOrden(Empleador, Empleado):-
 	trabajaPara(Empleador,Persona),
 	acataOrden(Persona, Empleado).
-	
+
+%Si. La clausula acataOrden es recursiva. Su caso base seria: acataOrden(marsellus, jules).
+
 esPeligroso(Personaje):-
 	personaje(Personaje, mafioso(maton)).
 
