@@ -94,5 +94,25 @@ respeto(actriz(Peliculas),NivelDeRespeto):-
 	
 respeto(mafioso(resuelveProblemas), 10).
 
-respeto(mafioso(capo), 20).	
+respeto(mafioso(capo), 20).
+
+respetabilidad(Respetables,NoRespetables):-
+	cantidadRespetables(Respetables),
+	cantidadNoRespetables(NoRespetables).
+
+esRespetable(Personaje):-
+	nivelRespeto(Personaje,NivelDeRespeto),
+	NivelDeRespeto>9.
+
+noEsRespetable(Personaje):-
+	personaje(Personaje,_),
+	not(esRespetable(Personaje)).
+
+cantidadRespetables(Respetables):-
+	findall(Personaje,esRespetable(Personaje), ListaRespetables),
+	length(ListaRespetables,Respetables).
+
+cantidadNoRespetables(NoRespetables):-
+	findall(Personaje,noEsRespetable(Personaje), ListaNoRespetables),
+	length(ListaNoRespetables,NoRespetables).
 
