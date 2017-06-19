@@ -61,18 +61,16 @@ acataOrden(Empleador, Empleado):-
 %Si. La clausula acataOrden es recursiva. Su caso base seria: acataOrden(marsellus, jules).
 
 esPeligroso(Personaje):-
-	personaje(Personaje, mafioso(maton)).
-
-esPeligroso(Personaje):-
-	robaLicorerias(Personaje).	
+	personaje(Personaje, Ocupacion),
+	ocupacionPeligrosa(Ocupacion).
+	
+ocupacionPeligrosa(mafioso(maton)).
+ocupacionPeligrosa(ladron(Ocupaciones)) :-
+	member(licorerias, Ocupaciones).
 	
 esPeligroso(Personaje):-
 	trabajaPara(Empleador, Personaje),
 	esPeligroso(Empleador).
-
-robaLicorerias(Personaje):-
-	personaje(Personaje, ladron(Ocupaciones)),
-	member(licorerias, Ocupaciones).
 
 sanCayetano(Persona):-
 	encargo(Persona, OtraPersona, _),
