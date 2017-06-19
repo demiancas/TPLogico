@@ -49,8 +49,7 @@ saleCon(Persona1, Persona2):-
 esFiel(Persona):-
 	saleCon(Persona, _),
 	findall(Persona,saleCon(Persona,_),Parejas),
-	length(Parejas,CantidadDeParejas),
-	CantidadDeParejas = 1.
+	length(Parejas,1).
 
 acataOrden(Empleador, Empleado):-
 	trabajaPara(Empleador, Empleado).
